@@ -1,22 +1,14 @@
 
 from __future__ import absolute_import
 
-import sys
 import numpy as np
 import torch
-from torch import nn
 import os
 from collections import OrderedDict
 from torch.autograd import Variable
-import itertools
 from .base_model import BaseModel
 from scipy.ndimage import zoom
-import fractions
-import functools
-import skimage.transform
 from tqdm import tqdm
-
-from IPython import embed
 
 from . import networks_basic as networks
 import models as util
@@ -26,7 +18,7 @@ class DistModel(BaseModel):
         return self.model_name
 
     def initialize(self, model='net-lin', net='alex', colorspace='Lab', pnet_rand=False, pnet_tune=False, model_path=None,
-            use_gpu=True, printNet=False, spatial=False, 
+            use_gpu=True, printNet=False, spatial=False,
             is_train=False, lr=.0001, beta1=0.5, version='0.1', gpu_ids=[0]):
         '''
         INPUTS
@@ -219,7 +211,7 @@ def score_2afc_dataset(data_loader, func, name=''):
     OUTPUTS
         [0] - 2AFC score in [0,1], fraction of time func agrees with human evaluators
         [1] - dictionary with following elements
-            d0s,d1s - N arrays containing distances between reference patch to perturbed patches 
+            d0s,d1s - N arrays containing distances between reference patch to perturbed patches
             gts - N array in [0,1], preferred patch selected by human evaluators
                 (closer to "0" for left patch p0, "1" for right patch p1,
                 "0.6" means 60pct people preferred right patch, 40pct preferred left)
