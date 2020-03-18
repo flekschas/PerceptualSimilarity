@@ -23,15 +23,14 @@ slurm_header = """#!/bin/bash
 
 # add additional commands needed for Lmod and module loads here
 source new-modules.sh
-module load cuda/9.0-fasrc02
-module load Anaconda/5.0.1-fasrc01
+module load Anaconda3/5.0.1-fasrc02 cuda/9.0-fasrc02 cudnn/7.0_cuda9.0-fasrc01
 """
 
 slurm_body = Template(
     """
 # add commands for analyses here
 cd /n/pfister_lab/lekschas/perceptual-similarity/
-source activate /n/pfister_lab/lekschas/envs/perceptual-similarity
+conda activate /n/pfister_lab/lekschas/envs/perceptual-similarity
 python compute_dists_pair.py -d imgs/data/$dataset -o imgs/data/$dataset.txt --use_gpu
 
 # end of program
