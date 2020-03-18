@@ -23,6 +23,7 @@ slurm_header = """#!/bin/bash
 
 # add additional commands needed for Lmod and module loads here
 source new-modules.sh
+module load cuda/9.0-fasrc02
 module load Anaconda/5.0.1-fasrc01
 """
 
