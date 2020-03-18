@@ -31,7 +31,7 @@ slurm_body = Template(
 # add commands for analyses here
 cd /n/pfister_lab/lekschas/perceptual-similarity/
 source activate /n/pfister_lab/lekschas/envs/perceptual-similarity
-python compute_dists_pair.py -d imgs/$dataset -o imgs/$dataset.txt --use_gpu
+python compute_dists_pair.py -d imgs/data/$dataset -o imgs/data/$dataset.txt --use_gpu
 
 # end of program
 exit 0;
